@@ -15,6 +15,7 @@ export class AppController {
   @UseGuards(localAuthGuard)
   @Post("login")
   login(@Request() req): any {
+    console.log("user call", req.user);
     return this.authService.login(req.user);
   }
 
@@ -22,5 +23,9 @@ export class AppController {
   @Get("protected")
   getHello(@Request() req): string {
     return req.user;
+  }
+  @Get()
+  getHelloCall(@Request() req): string {
+    return "Hello world";
   }
 }
